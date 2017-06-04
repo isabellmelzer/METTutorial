@@ -6,7 +6,7 @@ process.load("FWCore.MessageService.MessageLogger_cfi")
 
 process.MessageLogger.cerr.FwkReport.reportEvery = 100
 
-process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(20) )
+process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(10) )
 
 process.source = cms.Source("PoolSource",
     # replace 'myfile.root' with the source file you want to use
@@ -17,11 +17,7 @@ process.source = cms.Source("PoolSource",
 )
 
 process.demo = cms.EDAnalyzer('METAnalyzer',
-                              metSrc = cms.untracked.InputTag("slimmedMETs"),
-                              generator = cms.untracked.InputTag("generator"),
+                              metSrc = cms.untracked.InputTag("slimmedMETs")
 )
-#process.TFileService = cms.Service("TFileService",
-#   fileName = cms.string("MET_OutTree.root")
-#)
 
 process.p = cms.Path(process.demo)
