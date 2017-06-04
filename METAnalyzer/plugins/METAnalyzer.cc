@@ -1,11 +1,4 @@
-// -*- C++ -*-
-//
-// Package:    METTutorial/METAnalyzer
-// Class:      METAnalyzer
-// 
-/**\class METAnalyzer METAnalyzer.cc METTutorial/METAnalyzer/plugins/METAnalyzer.cc
-*/
-
+//METTutorial/METAnalyzer/plugins/METAnalyzer.cc : prints out event info and MET vector
 
 // system include files
 #include <memory>
@@ -23,15 +16,8 @@
 #include "FWCore/Utilities/interface/InputTag.h"
 #include "DataFormats/Common/interface/Handle.h"
 #include "DataFormats/PatCandidates/interface/MET.h"
-
-#include "DataFormats/VertexReco/interface/Vertex.h"
-#include "DataFormats/VertexReco/interface/VertexFwd.h"
 #include "TLorentzVector.h"
 #include "Math/GenVector/LorentzVector.h"
-
-//---------------for MC-----------------------
-#include "SimDataFormats/PileupSummaryInfo/interface/PileupSummaryInfo.h"
-
 
 // class declaration
 class METAnalyzer : public edm::one::EDAnalyzer<edm::one::SharedResources>  {
@@ -40,8 +26,7 @@ public:
   ~METAnalyzer();
   
   static void fillDescriptions(edm::ConfigurationDescriptions& descriptions);
-  
-  
+    
 private:
   virtual void beginJob() override;
   virtual void analyze(const edm::Event&, const edm::EventSetup&) override;
@@ -50,11 +35,6 @@ private:
   // ----------member data ---------------------------
   edm::InputTag metSrcTag_;
   edm::EDGetTokenT<edm::View<pat::MET>>            metSrcToken_;
-  edm::InputTag vtxSrcTag_;
-  edm::EDGetTokenT<reco::VertexCollection>         vertexCollectionToken_;
-  edm::InputTag puinfoSrcTag_;
-  edm::EDGetTokenT<std::vector<PileupSummaryInfo>> puInfoToken_;
-
   int nEvent;
 };
 
@@ -67,12 +47,10 @@ METAnalyzer::METAnalyzer(const edm::ParameterSet& iConfig)
   usesResource("TFileService");
 }
 
-
 METAnalyzer::~METAnalyzer()
 {
  
 }
-
 
 // ------------ method called for each event  ------------
 void
