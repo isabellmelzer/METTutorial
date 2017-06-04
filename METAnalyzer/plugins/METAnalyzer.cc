@@ -62,9 +62,6 @@ METAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
   iEvent.getByToken(metSrcToken_,meth);
   const pat::MET &met = meth->front();
 
-  TLorentzVector rawMet(0,0,0,0);
-  rawMet.SetPtEtaPhiE(met.uncorPt(),0,met.uncorPhi(),met.uncorPt());
-  
   // Print event information
   std::cout << "run " << iEvent.id().run()
 	    << " lumi " << iEvent.id().luminosityBlock()
