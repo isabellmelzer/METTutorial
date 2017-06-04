@@ -30,13 +30,10 @@
 #include "Math/GenVector/LorentzVector.h"
 
 //---------------for MC-----------------------
-#include "SimDataFormats/GeneratorProducts/interface/GenEventInfoProduct.h"
 #include "SimDataFormats/PileupSummaryInfo/interface/PileupSummaryInfo.h"
 
 
-//
 // class declaration
-//
 class METAnalyzer : public edm::one::EDAnalyzer<edm::one::SharedResources>  {
 public:
   explicit METAnalyzer(const edm::ParameterSet&);
@@ -53,8 +50,6 @@ private:
   // ----------member data ---------------------------
   edm::InputTag metSrcTag_;
   edm::EDGetTokenT<edm::View<pat::MET>>            metSrcToken_;
-  edm::InputTag evtinfoSrcTag_;
-  edm::EDGetTokenT<GenEventInfoProduct>            eventinfoToken_;
   edm::InputTag vtxSrcTag_;
   edm::EDGetTokenT<reco::VertexCollection>         vertexCollectionToken_;
   edm::InputTag puinfoSrcTag_;
@@ -65,35 +60,18 @@ private:
 
 METAnalyzer::METAnalyzer(const edm::ParameterSet& iConfig)
 {
-
-  evtinfoSrcTag_ = iConfig.getUntrackedParameter<edm::InputTag>("generator");
-  eventinfoToken_ = consumes<GenEventInfoProduct>(evtinfoSrcTag_);
-
-  //vertexCollectionToken_(consumes<reco::VertexCollection>(edm::InputTag("offlineSlimmedPrimaryVertices"))),
-  //puInfoToken_(consumes<std::vector<PileupSummaryInfo>>(edm::InputTag("slimmedAddPileupInfo")))
-
   metSrcTag_ = iConfig.getUntrackedParameter<edm::InputTag>("metSrc");
   metSrcToken_ = consumes<edm::View<pat::MET> >(metSrcTag_);
 
   nEvent=0;
-  //now do what ever initialization is needed
   usesResource("TFileService");
-
 }
 
 
 METAnalyzer::~METAnalyzer()
 {
  
-   // do anything here that needs to be done at desctruction time
-   // (e.g. close files, deallocate resources etc.)
-
 }
-
-
-//
-// member functions
-//
 
 
 // ------------ method called for each event  ------------
@@ -101,12 +79,6 @@ void
 METAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
 {
   using namespace edm;
-  //edm::Handle<GenEventInfoProduct>eventinfo;
-  //iEvent.getByToken(eventinfoToken_,eventinfo);
-  //edm::Handle<reco::VertexCollection> vertices;
-  //iEvent.getByToken(vertexCollectionToken_,vertices);
-  //edm::Handle<std::vector<PileupSummaryInfo> > puInfo;
-  //iEvent.getByToken(puInfoToken_, puInfo);
 
   edm::Handle<edm::View<pat::MET> > meth;
   iEvent.getByToken(metSrcToken_,meth);
@@ -119,19 +91,12 @@ METAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
   std::cout << "run " << iEvent.id().run()
 	    << " lumi " << iEvent.id().luminosityBlock()
 	    << " event " << iEvent.id().event();
-  // Print raw MET
-  std::cout << " rawpt " <<  rawMet.Pt() 
-	    << " rawpx " <<  rawMet.Px() 
-	    << " rawpy " <<  rawMet.Py() 
-	    << " rawphi " << rawMet.Phi();
   // Print corr MET (default out-of-box)
   std::cout << " pt " <<  met.pt() 
 	    << " px " <<  met.px() 
 	    << " py " <<  met.py() 
 	    << " phi " <<  met.phi() 
 	    << std::endl;
-
-  
 
   nEvent++;
 }
