@@ -1,0 +1,16 @@
+<use name="root"/>
+<use name="PhysicsTools/PatAlgos"/>
+<use name="FWCore/Framework"/>
+<use name="FWCore/PluginManager"/>
+<use name="FWCore/ParameterSet"/>
+<use name="DataFormats/PatCandidates"/>
+<use name="DataFormats/ParticleFlowCandidate"/>
+<use name="DataFormats/ParticleFlowReco"/>
+<use name="DataFormats/Common"/>
+<use name="CommonTools/UtilAlgos" />
+<use name="PhysicsTools/UtilAlgos"/>
+<use name="DataFormats/VertexReco"/>
+<use name="SimDataFormats/PileupSummaryInfo"/>
+<use name="FWCore/Utilities"/>
+<use name="rootrflx"/>
+<flags EDM_PLUGIN="1"/>
