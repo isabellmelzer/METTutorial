@@ -1,4 +1,4 @@
-//METTutorial/METAnalyzer/plugins/METAnalyzer.cc : prints out event info and MET vector
+// METTutorial/METAnalyzer/plugins/METAnalyzer.cc : prints out event info and MET vector
 
 // system include files
 #include <memory>
