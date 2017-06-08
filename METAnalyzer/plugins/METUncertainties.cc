@@ -110,7 +110,7 @@ METUncertainties::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetu
   hMET_pT ->Fill(met.pt());
   hMET_phi->Fill(met.phi());
 
-  // access met shifted for jec up
+  // access met shifted for jec up 
   hMET_pT_jecup ->Fill(met.shiftedPt(pat::MET::JetEnUp, pat::MET::Type1));
   hMET_phi_jecup->Fill(met.shiftedPhi(pat::MET::JetEnUp, pat::MET::Type1));
 
@@ -123,6 +123,10 @@ METUncertainties::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetu
     if(met.shiftedPt(pat::MET::JetEnUp, pat::MET::Type1) > metth[ii]) nEvt_jecup[ii]+=1;
     if(met.shiftedPt(pat::MET::JetEnDown, pat::MET::Type1) > metth[ii]) nEvt_jecdn[ii]+=1;
   }  
+
+  // for additional corrections, look for METUncertainty
+  // in DataFormats/PatCandidates/interface/MET.h
+
 
   nEvent++;
 }
