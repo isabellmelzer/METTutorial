@@ -25,7 +25,10 @@ process.demo = cms.EDAnalyzer('METFilters',
                               HBHENoiseFilter_Selector_ = cms.string("Flag_HBHENoiseFilter"),
                               HBHENoiseIsoFilter_Selector_ = cms.string("Flag_HBHENoiseIsoFilter"),
                               EcalDeadCellTriggerPrimitiveNoiseFilter_Selector_ = cms.string("Flag_EcalDeadCellTriggerPrimitiveFilter"),
-                              EEBadScNoiseFilter_Selector_ = cms.string("Flag_eeBadScFilter")
+                              BadPFMuonFilter_Selector_ = cms.string("Flag_BadPFMuonFilter"),
+                              BadChargedCandidateFilter_Selector_ = cms.string("Flag_BadChargedCandidateFilter"),
+                              EEBadScNoiseFilter_Selector_ = cms.string("Flag_eeBadScFilter"),
+                              EcalBadCalibFilter_Selector_ = cms.string("Flag_ecalBadCalibFilter")
 )
 
 process.p = cms.Path(process.demo)
