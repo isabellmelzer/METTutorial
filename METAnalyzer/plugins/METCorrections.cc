@@ -59,13 +59,13 @@ METCorrections::METCorrections(const edm::ParameterSet& iConfig)
   nEvent=0;
   edm::Service<TFileService> fs;
   hMET_pT_raw   = fs->make<TH1F>("hMET_pT_raw",   "hMET_pT_raw",  100, 0.0, 200.0);
-  hMET_phi_raw  = fs->make<TH1F>("hMET_phi_raw",  "hMET_phi_raw", 100, -3.2, 3.2);
+  hMET_phi_raw  = fs->make<TH1F>("hMET_phi_raw",  "hMET_phi_raw", 12, -3.142, 3.142);
   hMET_pT       = fs->make<TH1F>("hMET_pT",       "hMET_pT",      100, 0.0, 200.0);
-  hMET_phi      = fs->make<TH1F>("hMET_phi",      "hMET_phi",     100, -3.2, 3.2);
+  hMET_phi      = fs->make<TH1F>("hMET_phi",      "hMET_phi",     12, -3.142, 3.142);
   hMET_pT_type1  = fs->make<TH1F>("hMET_pT_type1",  "hMET_pT_type1", 100, 0.0, 200.0);
-  hMET_phi_type1 = fs->make<TH1F>("hMET_phi_type1", "hMET_phi_type1",100, -3.2, 3.2);
+  hMET_phi_type1 = fs->make<TH1F>("hMET_phi_type1", "hMET_phi_type1",12, -3.142, 3.142);
   hMET_pT_type1xy  = fs->make<TH1F>("hMET_pT_type1xy",  "hMET_pT_type1xy", 100, 0.0, 200.0);
-  hMET_phi_type1xy = fs->make<TH1F>("hMET_phi_type1xy", "hMET_phi_type1xy",100, -3.2, 3.2);
+  hMET_phi_type1xy = fs->make<TH1F>("hMET_phi_type1xy", "hMET_phi_type1xy",12, -3.142, 3.142);
   usesResource("TFileService");
 }
 
