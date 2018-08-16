@@ -10,10 +10,7 @@ process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1) )
 
 process.source = cms.Source("PoolSource",
                             fileNames = cms.untracked.vstring(
-        #'root://cmseos.fnal.gov//store/user/vhegde/MET_HATS2017/Run2016G_MET_MINIAOD_03Feb2017-v1_2E1DF27E-37EC-E611-A696-00259073E4E2.root'#Run 2016G MET dataset
-        # MC file
-        #'root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/DYJetsToLL_M-50_HT-100to200_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/120000/006F1B9A-81D0-E611-B9CE-0025905AA9CC.root'
-        '/store/mc/RunIIFall17MiniAODv2/DYJetsToLL_M-50_HT-100to200_TuneCP5_13TeV-madgraphMLM-pythia8/MINIAODSIM/PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/00000/08CD9834-8142-E811-9578-AC1F6B23C88C.root'                      
+        '/store/data/Run2018B/SingleMuon/MINIAOD/PromptReco-v1/000/317/696/00000/F8D50D8A-7B70-E811-BE51-FA163E442026.root'
         )
 )
 
