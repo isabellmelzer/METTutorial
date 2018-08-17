@@ -118,12 +118,15 @@ METUncertainties::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetu
   hMET_pT_jecdn ->Fill(met.shiftedPt(pat::MET::JetEnDown, pat::MET::Type1));
   hMET_phi_jecdn->Fill(met.shiftedPhi(pat::MET::JetEnDown, pat::MET::Type1));
 
-  for(int ii=0; ii<3; ii++) {
-    if(met.pt() > metth[ii]) nEvt[ii]+=1;
-    if(met.shiftedPt(pat::MET::JetEnUp, pat::MET::Type1) > metth[ii]) nEvt_jecup[ii]+=1;
-    if(met.shiftedPt(pat::MET::JetEnDown, pat::MET::Type1) > metth[ii]) nEvt_jecdn[ii]+=1;
+  for(int ii=0; ii<2; ii++) {
+    if((met.pt() > metth[ii]) && (met.pt() < metth[ii+1])) nEvt[ii]+=1;
+    if((met.shiftedPt(pat::MET::JetEnUp, pat::MET::Type1) > metth[ii]) && (met.shiftedPt(pat::MET::JetEnUp, pat::MET::Type1) < metth[ii+1])) nEvt_jecup[ii]+=1;
+    if((met.shiftedPt(pat::MET::JetEnDown, pat::MET::Type1) > metth[ii]) && (met.shiftedPt(pat::MET::JetEnDown, pat::MET::Type1) < metth[ii+1])) nEvt_jecdn[ii]+=1;
   }  
-
+  if(met.pt() > metth[2]) nEvt[2]+=1;
+  if(met.shiftedPt(pat::MET::JetEnUp, pat::MET::Type1) > metth[2]) nEvt_jecup[2]+=1;
+  if(met.shiftedPt(pat::MET::JetEnDown, pat::MET::Type1) > metth[2])  nEvt_jecdn[2]+=1;
+  
   // for additional corrections, look for METUncertainty
   // in DataFormats/PatCandidates/interface/MET.h
 
